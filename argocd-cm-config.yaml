@@ -10,3 +10,8 @@ data:
     kustomize.buildOptions: --load-restrictor LoadRestrictionsNone
     kustomize.buildOptions.v4.4.0: --output /tmp
     kustomize.buildOptions: --enable-helm
+    configManagementPlugins: |
+      - name: kustomize-build-with-helm
+        generate:
+          command: [ "sh", "-c" ]
+          args: [ "kustomize build --enable-helm" ]
