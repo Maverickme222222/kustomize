@@ -15,3 +15,10 @@ data:
         generate:
           command: [ "sh", "-c" ]
           args: [ "kustomize build --enable-helm" ]
+      - name: kustomized-helm
+        init:
+          command: ["/bin/sh", "-c"]
+          args: ["helm dependency build || true"]
+        generate:
+          command: ["/bin/sh", "-c"]
+          args: ["helm template . --name-template $ARGOCD_APP_NAME --include-crds > all.yml && kustomize build"]
