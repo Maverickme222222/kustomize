@@ -17,4 +17,4 @@ helmChartInflationGenerator:
   releaseName: my-prometheus-release
   releaseNamespace: prometheus-chart
   # override with these custom values
-  values: values.yaml
+  # values: values.yaml
