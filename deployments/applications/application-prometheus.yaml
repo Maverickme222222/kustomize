@@ -1,0 +1,34 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: external-kube-prometheus-stack
+  namespace: argocd
+  labels:
+    app: external-kube-prometheus-stack
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: prometheus
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: charts/kube-prometheus-stack
+    repoURL: https://github.com/prometheus-community/helm-charts/
+    targetRevision: HEAD
+    helm:
+      values: |
+        prometheus-node-exporter:
+          hostRootFsMount:
+            enabled: false
+      parameters:
+      - name: "nodeExporter.hostRootfs"
+        value: 'false'
+  syncPolicy:
+    # Override sync policy to ensure ArgoCD can handle the very large CRD files
+    # in the kube-prometheus-stack chart. See
+    # https://argo-cd.readthedocs.io/en/release-2.4/user-guide/sync-options/#replace-resource-instead-of-applying-changes
+    # for more details.
+    syncOptions:
+      - ServerSideApply=true
+      - CreateNamespace=true
