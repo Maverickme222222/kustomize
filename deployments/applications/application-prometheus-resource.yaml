@@ -23,4 +23,5 @@ spec:
     # for more details.
     syncOptions:
       - ServerSideApply=true
+      - Replace=true
       - CreateNamespace=true
