@@ -4,8 +4,17 @@ resources:
 - namespace.yaml
 namespace: prometheus
 
-helmCharts:
-- name: kube-prometheus-stack
-  repo: https://prometheus-community.github.io/helm-charts
-  version: 50.3.1
-  ValuesFile: values.yaml
+# helmCharts:
+# - name: kube-prometheus-stack
+#   repo: https://prometheus-community.github.io/helm-charts
+#   version: 50.3.1
+#   ValuesFile: values.yaml
+
+helmChartInflationGenerator:
+- chartName: kube-prometheus-stack
+  chartRepoUrl: https://prometheus-community.github.io/helm-charts
+  chartVersion: 50.3.1
+  releaseName: my-prometheus-release
+  releaseNamespace: prometheus-chart
+  # override with these custom values
+  values: values.yaml
