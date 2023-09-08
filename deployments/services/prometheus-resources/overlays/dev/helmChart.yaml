@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: HelmChart
+metadata:
+  name: my-helm-chart
+spec:
+  chart: https://github.com/prometheus-community/helm-charts/charts/kube-prometheus-stack  # Same as in the base HelmChart resource
+  releaseName: my-release
+  values: values.yaml  # Specify the custom values file for this overlay

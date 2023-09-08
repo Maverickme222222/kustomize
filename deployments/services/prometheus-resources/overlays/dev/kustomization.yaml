@@ -4,4 +4,4 @@ resources:
 - ../../base
 
 generators:
-  - helmChartInflationGenerator.yaml
+  - helmChart.yaml
