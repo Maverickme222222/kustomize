@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: argocd-plugin-kustomized-helm
+data:
+  plugin.yaml: |
+    apiVersion: argoproj.io/v1alpha1
+    kind: ConfigManagementPlugin
+    metadata:
+      name: argocd-plugin-kustomized-helm
+    spec:
+      init:
+        command: ["sh", "-c"]
+        args: ["echo hello; helm repo add ${helm_dependency_name} ${helm_dependency_repo} && helm dependency update ${helm_base}"]
+      generate:
+        command: ["sh", "-c"]
+        args: ["echo world; helm template --include-crds ${helm_dependency_name} ${helm_base} ${helm_args} > ${helm_base}/all.yaml && kustomize build . --enable-helm > all.yaml"]
+      discover:
+        find:
+          command: ["bash", "-c", "echo finding; find . -type f -name kustomization.yaml | grep . && find . -type f -name Chart.yaml | grep ."]

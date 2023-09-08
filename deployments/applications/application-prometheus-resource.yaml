@@ -16,6 +16,8 @@ spec:
     path: deployments/services/prometheus-resources/overlays/dev
     repoURL: https://github.com/Maverickme222222/kustomize
     targetRevision: HEAD
+    plugin:
+      name: argocd-plugin-kustomized-helm
   syncPolicy:
     # Override sync policy to ensure ArgoCD can handle the very large CRD files
     # in the kube-prometheus-stack chart. See
