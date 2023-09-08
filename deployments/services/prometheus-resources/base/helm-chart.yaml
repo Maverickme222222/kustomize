@@ -1,9 +1,0 @@
-apiVersion: apps/v1
-kind: HelmChart
-metadata:
-  name: prometheus-helm-chart
-spec:
-  chart: https://github.com/prometheus-community/helm-charts/charts/kube-prometheus-stack  # Replace with the chart URL and version
-  releaseName: my-release
-  values:
-    - values.yaml
