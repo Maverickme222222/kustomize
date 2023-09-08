@@ -1,6 +1,6 @@
 # kustomize
 
-- [ ] ArgoCD
+- [x] ArgoCD
 - [ ] Argo Rollback
 - [ ] Argo Workflow
 - [ ] Argo Events
