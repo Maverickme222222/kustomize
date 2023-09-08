@@ -1,3 +1,7 @@
+global:
+  rbac:
+    create: true
+
 prometheus-node-exporter:
   hostRootFsMount:
     enabled: false
