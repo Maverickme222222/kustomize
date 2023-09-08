@@ -11,10 +11,6 @@ data:
     kustomize.buildOptions.v4.4.0: --output /tmp
     kustomize.buildOptions: --enable-helm
     configManagementPlugins: |
-      - name: kustomize-build-with-helm
-        generate:
-          command: [ "sh", "-c" ]
-          args: [ "kustomize build --enable-helm" ]
       - name: kustomized-helm
         init:
           command: ["/bin/sh", "-c"]
