@@ -17,4 +17,4 @@ data:
           args: ["helm dependency build || true"]
         generate:
           command: ["/bin/sh", "-c"]
-          args: ["helm template . --name-template $ARGOCD_APP_NAME --include-crds > all.yml && kustomize build"]
+          args: ["echo \"$ARGOCD_ENV_HELM_ARGS\" | helm template ../../base --name-template $ARGOCD_APP_NAME --namespace $ARGOCD_APP_NAMESPACE $HELM_ARGS -f - --include-crds > ../../base/all.yaml && kustomize build"]
