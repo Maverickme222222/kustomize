@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: external-nginx
+  namespace: argocd
+  labels:
+    app: external-nginx
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: default
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: deployments/services/nginx/overlays/dev
+    repoURL: https://github.com/Maverickme222222/kustomize
+    targetRevision: HEAD
+    plugin:
+      name: kustomized-helm
+  syncPolicy:
+    # Override sync policy to ensure ArgoCD can handle the very large CRD files
+    # in the kube-prometheus-stack chart. See
+    # https://argo-cd.readthedocs.io/en/release-2.4/user-guide/sync-options/#replace-resource-instead-of-applying-changes
+    # for more details.
+    syncOptions:
+      automated:
+        prune: true
