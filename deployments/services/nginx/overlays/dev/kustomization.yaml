@@ -3,7 +3,5 @@ kind: Kustomization
 resources:
 - ../../base
 
-
-image:
-  repository: nginx
-  tag: 2.0.0
+patches:
+  - values.yaml
