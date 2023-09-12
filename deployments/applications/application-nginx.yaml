@@ -16,8 +16,6 @@ spec:
     path: deployments/services/nginx/overlays/dev
     repoURL: https://github.com/Maverickme222222/kustomize
     targetRevision: HEAD
-    plugin:
-      name: kustomized-helm
   syncPolicy:
     automated:
       prune: true
