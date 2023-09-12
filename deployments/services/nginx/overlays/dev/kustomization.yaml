@@ -4,6 +4,5 @@ resources:
 - ../../base
 
 
-helmCharts:
-- name: nginx
-  ValuesFile: values.yaml
+patches:
+- values.yaml
