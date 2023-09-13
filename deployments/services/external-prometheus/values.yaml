@@ -10,10 +10,7 @@ kube-prometheus-stack:
   alertmanager:
     # Note we configure AlertMgr via an AlertmanagerConfiguration - see
     # templates dir
-    alertmanagerSpec:
-      alertmanagerConfiguration:
-        name: global-alertmanager-configuration
-      logLevel: info
+    enabled: true
 
   prometheus-node-exporter:
     hostRootFsMount:
