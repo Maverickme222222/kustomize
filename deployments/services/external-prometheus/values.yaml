@@ -14,20 +14,6 @@ kube-prometheus-stack:
       alertmanagerConfiguration:
         name: global-alertmanager-configuration
       logLevel: info
-      # Note: counter-intuitively, this attribute is called 'storage' for
-      # alertmanager, and 'storageSpec' for prometheus (below). Spec for
-      # reference:
-      # https://github.com/prometheus-community/helm-charts/blob/24e36b5d3ab440126586c424b454c8d93685f547/charts/kube-prometheus-stack/values.yaml#L546C16-L546C16
-      storage:
-        volumeClaimTemplate:
-          spec:
-            storageClassName: gp2
-            resources:
-              requests:
-                storage: 10Gi
-  ingress:
-      enabled: true
-
 
   prometheus-node-exporter:
     hostRootFsMount:
