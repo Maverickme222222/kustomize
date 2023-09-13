@@ -1,3 +1,4 @@
-prometheus-node-exporter:
-  hostRootFsMount:
-    enabled: false
+kube-prometheus-stack:
+  prometheus-node-exporter:
+    hostRootFsMount:
+      enabled: false
