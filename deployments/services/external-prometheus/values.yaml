@@ -1,4 +1,5 @@
 kube-prometheus-stack:
+  fullnameOverride: kappa-prometheus
   prometheus-node-exporter:
     hostRootFsMount:
       enabled: false
