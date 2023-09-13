@@ -28,5 +28,6 @@ spec:
     # https://argo-cd.readthedocs.io/en/release-2.4/user-guide/sync-options/#replace-resource-instead-of-applying-changes
     # for more details.
     syncOptions:
+      - Replace=true
       - ServerSideApply=true
       - CreateNamespace=true
