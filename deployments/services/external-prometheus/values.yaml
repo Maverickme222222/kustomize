@@ -11,6 +11,8 @@ kube-prometheus-stack:
     # Note we configure AlertMgr via an AlertmanagerConfiguration - see
     # templates dir
     enabled: true
+    ingress:
+      enabled: true
 
   prometheus-node-exporter:
     hostRootFsMount:
