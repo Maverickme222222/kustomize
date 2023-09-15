@@ -13,7 +13,7 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: deployments/services/nginx/overlays/dev
+    path: deployments/services/internal/nginx/overlays/dev
     repoURL: https://github.com/Maverickme222222/kustomize
     targetRevision: HEAD
   syncPolicy:
