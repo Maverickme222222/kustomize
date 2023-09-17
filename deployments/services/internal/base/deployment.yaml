@@ -4,17 +4,7 @@ metadata:
   name: common-deployment
 spec:
   replicas: 3  # Number of NGINX pods to run
-  selector:
-    matchLabels:
-      app: common-deployment
   template:
     metadata:
       labels:
         app: common-deployment
-        release: external-kube-prometheus-stack
-    spec:
-      containers:
-      - name: nginx
-        image: nginx:latest  # NGINX container image
-        ports:
-        - containerPort: 80  # Port to expose
