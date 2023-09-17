@@ -1,0 +1,45 @@
+# We keep our alertmanager configuration in a separate K8S object to allow easy
+# mutation on a live system. ArgoCD will render and push this file straight to
+# K8S without needing to re-render the subchart; the Prometheus operator will
+# pick up changes to this object and HUP the running AlertManager
+#
+# WARNING: Here be dragons!
+# Be careful of formatting - the Kubernetes fields are named slightly
+# differently than those in the native AlertManager configuration and it is
+# possible to crash the AlertManager with mal-formed config. It's worth
+# verifying with a test alert after any changes to avoid monitoring outages.
+
+# Note to future Kappa engineers - the v1alpha spec is subject to change and
+# this may need refactoring at some point.
+#
+# Ref: https://prometheus-operator.dev/docs/operator/api/#monitoring.coreos.com/v1alpha1.AlertmanagerConfig
+apiVersion: monitoring.coreos.com/v1alpha1
+kind: AlertmanagerConfig
+metadata:
+  name: global-alertmanager-configuration
+  namespace: {{ .Values.monitoring.namespace }}
+spec:
+  route:
+    groupBy: ['alertname']
+    groupWait: 30s
+    groupInterval: 5m
+    repeatInterval: 12h
+    receiver: 'null'
+
+    # Error/Critical errors will push to Pagerduty. All errorlevels will push
+    # to Slack. Note the 'continue' block in the PagerDuty stanza.
+    # Special routing for certain alerts:
+    # * Watchdog alerts go to healthchecks.io for dead man's switch
+    # * InfoInhibitor alerts go to null
+    routes:
+      - receiver: 'null'
+        matchers:
+          - name: "alertname"
+            value: "InfoInhibitor"
+            matchType: "="
+      
+  receivers:
+    # Documentation:
+    # https://prometheus-operator.dev/docs/operator/api/#monitoring.coreos.com/v1alpha1.SlackConfig
+    # The null receiver doesn't do anything - used to blackhole alerts
+    - name: 'null'
