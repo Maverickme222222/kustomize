@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-test-deployment  # New name for the deployment
+spec:
+  replicas: 1  # Modify other specifications as needed
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+        release: external-kube-prometheus-stack
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:latest  # NGINX container image
+        ports:
+        - containerPort: 80  # Port to expose
