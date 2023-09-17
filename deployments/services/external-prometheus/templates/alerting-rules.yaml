@@ -1,0 +1,15 @@
+# This template file is designed work with one or more alert rules in the
+# values file.
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  labels:
+    app: alerts-{{ .Release.Name }}
+    release: {{ .Values.monitoring.release }}
+  name: alerts-{{ .Release.Name }}
+  namespace: {{ .Values.monitoring.namespace }}
+spec:
+  groups:
+  - name: {{ .Release.Name }}
+    rules:
+{{ .Values.monitoring.prometheusAlerts | toYaml | indent 4 }}

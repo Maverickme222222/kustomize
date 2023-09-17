@@ -1,3 +1,19 @@
+monitoring:
+  # These values get rendered by the associated alerting template into
+  # PrometheusRules objects, which are what Prometheus uses to determine
+  # alerting configuration. See README.md for more information.
+  prometheusAlerts:
+    - alert: ContainerOOMKilled
+      annotations:
+        summary: Container OOMKilled
+        description: |
+          Container {{ $labels.container }} from pod {{ $labels.pod }} in namespace {{ $labels.namespace }} has been OOMKilled recently - consider adjusting pod limits.
+      expr: |
+        increase(kube_pod_container_status_last_terminated_reason{reason="OOMKilled"}[5m]) >= 0
+      for: 5m
+      labels:
+        severity: warning
+
 kube-prometheus-stack:
   fullnameOverride: kappa-prometheus
   defaultRules:
