@@ -1,4 +1,6 @@
 monitoring:
+  release: external-prometheus
+  namespace: prometheus
   # These values get rendered by the associated alerting template into
   # PrometheusRules objects, which are what Prometheus uses to determine
   # alerting configuration. See README.md for more information.
