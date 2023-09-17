@@ -1,13 +1,6 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: common-deployment
+  app: deployment
 spec:
-  replicas: 3  # Number of NGINX pods to run
-  selector:
-    matchLabels:
-      app: common-deployment
-  template:
-    metadata:
-      labels:
-        app: common-deployment
+  replicas: 1  # Number of NGINX pods to run
