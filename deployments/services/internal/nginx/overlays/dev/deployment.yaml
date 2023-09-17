@@ -1,0 +1,6 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-test-deployment  # New name for the deployment
+spec:
+  replicas: 1  # Modify other specifications as needed
