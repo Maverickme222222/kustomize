@@ -1,0 +1,18 @@
+# This file will create Kubernernetes configMap objects to hold a Grafana
+# dashboard. We use one configMap per dashboard.
+{{- range .Values.monitoring.grafanaDashboards }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  labels:
+    grafana_dashboard: "1"
+  annotations:
+    k8s-sidecar-target-directory: {{ .directory }}
+  name: grafana-dashboard-{{ .name }}
+  namespace: prometheus
+data:
+  grafana-dashboard-{{ .name }}.json: |-
+    {{- "\n" }}
+    {{- $.Files.Get ( printf "files/grafana-dashboard-%s.json" .name ) | indent 4 }}
+---
+{{- end }}

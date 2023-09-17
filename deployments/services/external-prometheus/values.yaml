@@ -15,7 +15,13 @@ monitoring:
       for: 5m
       labels:
         severity: warning
-
+  
+  grafanaDashboards:
+    - name: restarting-pods
+      directory: /tmp/dashboards/Sandbox
+    - name: k8s-views-pods
+      directory: /tmp/dashboards/Kubernetes
+    
 kube-prometheus-stack:
   fullnameOverride: kappa-prometheus
   defaultRules:
