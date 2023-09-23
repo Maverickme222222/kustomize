@@ -4,7 +4,7 @@
 
 base:
   deploymentName: "nginx-test"
-  replicaCount: 2
+  replicaCount: 1
   containerName: "nginx"
 
   image:
