@@ -4,7 +4,7 @@
 
 deploymentName: ""
 replicaCount: 1
-containerName: ""
+containerName: "test"
 
 image:
   repository: nginx
