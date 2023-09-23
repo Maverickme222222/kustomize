@@ -1,19 +1,12 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nginx-test-deployment  # New name for the deployment
+  name: common-deployment
+  app: nginx
 spec:
-  replicas: 1  # Modify other specifications as needed
-  selector:
-    matchLabels:
-      app: nginx
+  replicas: 2 # Update the replica count to 3
   template:
-    metadata:
-      labels:
-        app: nginx
     spec:
       containers:
-      - name: nginx
-        image: nginx:latest  # NGINX container image
-        ports:
-        - containerPort: 80  # Port to expose
+      - name: common
+        image: nginx:latest

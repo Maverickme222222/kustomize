@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.deploymentName }}
+spec:
+  replicas: {{ .Values.replicaCount }}  # Number of desired replicas
+  selector:
+    matchLabels:
+      app: nginx  # Label to select pods for this deployment
+  template:
+    metadata:
+      labels:
+        app: nginx  # Label for pods created by this deployment
+    spec:
+      containers:
+      - name: {{ .Values.containerName }}
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        ports:
+        - containerPort: 80  # Port on which the container listens

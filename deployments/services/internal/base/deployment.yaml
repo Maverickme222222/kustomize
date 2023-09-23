@@ -1,6 +1,26 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  app: deployment
+  name: common-deployment
 spec:
-  replicas: 1  # Number of NGINX pods to run
+  replicas: 1
+  selector:
+    matchLabels:
+      app: common
+  template:
+    metadata:
+      labels:
+        app: common
+    spec:
+      containers:
+      - name: common
+        image: test:latest
+        ports:
+        - containerPort: 80
+        resources:
+          limits:
+            cpu: "200m" # Lower CPU limit to 200m (0.2 CPU cores)
+            memory: "256Mi" # Lower memory limit to 256 MiB
+          requests:
+            cpu: "100m" # Lower CPU request to 100m (0.1 CPU cores)
+            memory: "128Mi"
