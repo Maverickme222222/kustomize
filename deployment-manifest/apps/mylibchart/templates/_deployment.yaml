@@ -33,15 +33,6 @@ spec:
             {{- toYaml .Values.resources | nindent 12 }}
           ports:
             - containerPort: {{ .Values.service.targetPort }}
-          livenessProbe:
-            exec:
-              command: ["/bin/grpc_health_probe", "-addr=:9090"]
-            initialDelaySeconds: 10
-          readinessProbe:
-            exec:
-              command: ["/bin/grpc_health_probe", "-addr=:9090"]
-            initialDelaySeconds: 5
-            timeoutSeconds: 1
           envFrom:
             - configMapRef:
                 name: {{ .Values.environmentConfigName | quote}}
