@@ -1,0 +1,4 @@
+{{- include "mylibchart.configmap" (list . "nginx.configmap") -}}
+{{- define "nginx.configmap" -}}
+data: {}
+{{- end -}}

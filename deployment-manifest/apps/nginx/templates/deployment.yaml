@@ -1,0 +1,4 @@
+{{- include "mylibchart.deployment" (list . "nginx.deployment") -}}
+{{- define "nginx.deployment" -}}
+data: {}
+{{- end -}}

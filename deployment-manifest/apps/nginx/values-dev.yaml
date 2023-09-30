@@ -1,0 +1,8 @@
+image:
+  name: nginx
+  tag: latest
+
+service:
+  targetPort: 8080
+
+environmentConfigName: test
