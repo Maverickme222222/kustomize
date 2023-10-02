@@ -43,4 +43,5 @@ app.kubernetes.io/managed-by: {{ .Release.Service }}
 app.kubernetes.io/name: {{ include "deploy.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 app: {{ include "deploy.name" . }}
+release: external-kube-prometheus-stack
 {{- end }}
