@@ -1,0 +1,30 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: application-jupyter
+  namespace: argocd
+  labels:
+    app: application-jupyter
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: jupyter
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: deployment-manifest/apps/jupyter
+    repoURL: https://github.com/Maverickme222222/kustomize
+    targetRevision: HEAD
+    helm:
+      valueFiles:
+        - values-dev.yaml
+  syncPolicy:
+    automated:
+      prune: true
+    # Override sync policy to ensure ArgoCD can handle the very large CRD files
+    # in the kube-prometheus-stack chart. See
+    # https://argo-cd.readthedocs.io/en/release-2.4/user-guide/sync-options/#replace-resource-instead-of-applying-changes
+    # for more details.
+    syncOptions:
+      - CreateNamespace=true
