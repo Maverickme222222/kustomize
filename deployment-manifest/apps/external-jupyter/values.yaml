@@ -1,5 +1,10 @@
 jupyterlab:
   password: "admin123"
+  gitUrl: "https://github.com/MaastrichtU-IDS/dsri-demo"
+  # Git config to be set in the container
+  gitName: "Default user"
+  gitEmail: "default@maastrichtuniversity.nl"
+  
   image:
     repository: jupyter/minimal-notebook
     addJupyterConfig: true
