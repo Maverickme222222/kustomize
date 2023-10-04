@@ -3,5 +3,7 @@ jupyterlab:
   image:
     repository: jupyter/minimal-notebook
     addJupyterConfig: true
+  service:
+    type: LoadBalancer
   serviceAccount:
     name: default
