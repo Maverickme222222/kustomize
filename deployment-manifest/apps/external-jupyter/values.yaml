@@ -1,4 +1,7 @@
 jupyterlab:
   password: "admin123"
+  image:
+    repository: jupyter/scipy-notebook
+    addJupyterConfig: true
   serviceAccount:
     name: default
