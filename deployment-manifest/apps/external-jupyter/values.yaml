@@ -1,2 +1,4 @@
 jupyterlab:
   password: "admin123"
+  serviceAccount:
+    name: default
