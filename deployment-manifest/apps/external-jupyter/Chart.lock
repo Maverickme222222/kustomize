@@ -1,6 +1,6 @@
 dependencies:
-- name: jupyterlab
-  repository: https://maastrichtu-ids.github.io/dsri-helm-charts
-  version: 0.1.38
-digest: sha256:b1117091b8e06994e74301b376bfc7810abb0c9764eed5e058a6cbf3ad1c8730
-generated: "2023-10-04T12:34:03.606898-04:00"
+- name: jupyterhub
+  repository: https://hub.jupyter.org/helm-chart
+  version: 3.1.0
+digest: sha256:3abec2f0fd21929c3ea10ea1153b1a56aab3193f48d136aeae25b8263b10a13b
+generated: "2023-10-05T21:13:34.506617-04:00"
