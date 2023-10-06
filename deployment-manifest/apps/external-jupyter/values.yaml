@@ -6,14 +6,14 @@ jupyterhub:
     defaultUrl: "/lab"
     image:
       name: maverickme22/jupyterhub
-      tag: v1.0.0
+      tag: v1.0.1
     lifecycleHooks:
       postStart:
         exec:
           command:
             [
               "gitpuller",
-              "https://github.com/data-8/materials-fa17",
+              "https://github.com/maverickme22/jupyter.git",
               "master",
-              "materials-fa",
+              "jupyter",
             ]
