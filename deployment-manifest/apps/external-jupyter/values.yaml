@@ -2,3 +2,7 @@ jupyterhub:
   proxy:
     service:
       type: ClusterIP
+  singleuser:
+    image:
+      name: maverickme22/jupyterhub
+      tag: v1.0.0
