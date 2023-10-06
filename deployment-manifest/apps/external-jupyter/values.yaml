@@ -6,7 +6,7 @@ jupyterhub:
     defaultUrl: "/lab"
     image:
       name: maverickme22/jupyterhub
-      tag: v1.0.2
+      tag: v1.0.3
     lifecycleHooks:
       postStart:
         exec:

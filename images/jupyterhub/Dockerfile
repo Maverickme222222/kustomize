@@ -1,8 +1,9 @@
 FROM jupyter/minimal-notebook:latest
 
+RUN pip install jupyterlab==3.*
 RUN pip install --no-cache-dir nbgitpuller 
-RUN pip install jupyterlab-git && \
-    jupyter server extension enable jupyterlab_git
+RUN pip install --upgrade "jupyterlab<4" jupyterlab-git
+RUN jupyter server extension enable jupyterlab_git
 
 # && \
 #     jupyter serverextension enable --py nbgitpuller --sys-prefix && \
