@@ -12,7 +12,6 @@ jupyterhub:
       type: none
     extraEnv:
       GRANT_SUDO: "yes"
-      NB_USER: "pankaj"
       CHOWN_HOME: 'yes'
       CHOWN_HOME_OPTS: '-R'
     uid: 0
