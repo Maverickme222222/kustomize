@@ -9,13 +9,14 @@ jupyterhub:
       tag: v2.0.0
       pullPolicy: Always
     storage:
-      type: none
+      type: "static"
+      static:
+        pvcName: "nfs-home-pvc"
+        subPath: '{username}'
     extraEnv:
       GRANT_SUDO: "yes"
       CHOWN_HOME: 'yes'
       CHOWN_HOME_OPTS: '-R'
-    uid: 0
-    fsGid: 0
     # lifecycleHooks:
     #   postStart:
     #     exec:
