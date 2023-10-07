@@ -7,13 +7,13 @@ jupyterhub:
     image:
       name: maverickme22/jupyterhub
       tag: v1.0.5
-    lifecycleHooks:
-      postStart:
-        exec:
-          command:
-            [
-              "gitpuller",
-              "https://github.com/maverickme22/jupyter.git",
-              "main",
-              "jupyter",
-            ]
+    # lifecycleHooks:
+    #   postStart:
+    #     exec:
+    #       command:
+    #         [
+    #           "gitpuller",
+    #           "https://github.com/maverickme22/jupyter.git",
+    #           "main",
+    #           "jupyter",
+    #         ]
