@@ -6,4 +6,5 @@ RUN pip install --no-cache-dir nbgitpuller
 RUN pip install --upgrade "jupyterlab<4" jupyterlab-git
 RUN jupyter server extension enable jupyterlab_git
 
+USER pankaj
 COPY id_rsa_maverick_github /tmp/id_rsa_maverick_github

@@ -13,10 +13,6 @@ jupyterhub:
       static:
         pvcName: "nfs-home-pvc"
         subPath: '{username}'
-    extraEnv:
-      GRANT_SUDO: "yes"
-      CHOWN_HOME: 'yes'
-      CHOWN_HOME_OPTS: '-R'
     # lifecycleHooks:
     #   postStart:
     #     exec:
