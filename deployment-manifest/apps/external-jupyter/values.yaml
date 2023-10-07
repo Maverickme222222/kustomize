@@ -7,6 +7,7 @@ jupyterhub:
     image:
       name: maverickme22/jupyterhub
       tag: v1.0.7
+      pullPolicy: Always
     # lifecycleHooks:
     #   postStart:
     #     exec:
